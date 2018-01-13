@@ -6,8 +6,9 @@ const Block = require('./block');
 
 class GenesisBlock extends Block {
   constructor() {
-    super({}, null);
+    super({}, null, 0, 1515879838967);
   }
+
   generateHash() {
     return '0000000000000000000000000000000000000000000000000000000000000000';
   }

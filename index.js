@@ -2,18 +2,20 @@
  * Created by Vadym Yatsyuk on 12.01.18
  */
 
-const BlockChain = require('./blockchain');
+const Blockchain = require('./blockchain');
 
-let blockChain = new BlockChain();
+let blockchain = new Blockchain();
 
-blockChain.add({
+blockchain.add({
   value: 1
 });
 
-blockChain.add({
+blockchain.add({
   value: 2
 });
 
-blockChain.blocks.forEach(block => {
+blockchain.blocks.forEach(block => {
   console.log(JSON.stringify(block));
 });
+
+console.log('Is blockchain valid?', blockchain.isValidBlockchain());
