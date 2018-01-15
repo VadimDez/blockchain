@@ -10,7 +10,7 @@ class GenesisBlock extends Block {
   }
 
   generateHash() {
-    return '0000000000000000000000000000000000000000000000000000000000000000';
+    return new Array(65).join('0');
   }
 }
 
