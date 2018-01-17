@@ -44,22 +44,22 @@ describe('Blockchain', () => {
   });
 
   describe('block validation', () => {
-    it('should validate if previous hash matches', function () {
-      const lastBlock = new Block({}, '0', 1, 1);
+    let lastBlock
+    beforeEach(() => {
+      lastBlock = new Block({}, '0', 1, 1);
+    });
 
+    it('should validate if previous hash matches', function () {
       assert.isTrue(Blockchain.isValidBlock(new Block({}, lastBlock.hash, 2, 1), lastBlock));
       assert.isFalse(Blockchain.isValidBlock(new Block({}, '123', 2, 1), lastBlock));
     });
 
     it('should validate index', function () {
-      const lastBlock = new Block({}, '0', 1, 1);
-
       assert.isTrue(Blockchain.isValidBlock(new Block({}, lastBlock.hash, 2, 1), lastBlock));
       assert.isFalse(Blockchain.isValidBlock(new Block({}, lastBlock.hash, 1, 1), lastBlock));
     });
 
     it('should validate that both blocks are not null', function () {
-      const lastBlock = new Block({}, '0', 1, 1);
       const newBlock = new Block({}, lastBlock.hash, 2, 1);
 
       assert.isFalse(Blockchain.isValidBlock(null, null));
@@ -69,7 +69,6 @@ describe('Blockchain', () => {
     });
 
     it('should validate hash', function () {
-      const lastBlock = new Block({}, '0', 1, 1);
       let newBlock = new Block({}, lastBlock.hash, 2, 1);
 
       assert.isTrue(Blockchain.isValidBlock(newBlock, lastBlock));
